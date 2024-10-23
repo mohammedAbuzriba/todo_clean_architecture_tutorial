@@ -37,7 +37,8 @@ class HomePage extends GetView<TodoController> {
                         splashRadius: 20,
                         onPressed: () {
                           controller.titleController.text = todos[index].text;
-                          controller.descriptionController.text = todos[index].description;
+                          controller.descriptionController.text =
+                              todos[index].description;
                           showModalBottomSheet(
                             showDragHandle: true,
                             isScrollControlled: true,
@@ -45,7 +46,8 @@ class HomePage extends GetView<TodoController> {
                             builder: (context) {
                               return Container(
                                 width: double.maxFinite,
-                                height: MediaQuery.of(context).size.height * 0.8,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.8,
                                 color: Colors.white,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -54,7 +56,8 @@ class HomePage extends GetView<TodoController> {
                                     child: Column(
                                       children: [
                                         TextFormField(
-                                          controller: controller.titleController,
+                                          controller:
+                                              controller.titleController,
                                           validator: (value) {
                                             if (value!.isEmpty) {
                                               return 'Title is required';
@@ -66,9 +69,11 @@ class HomePage extends GetView<TodoController> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(bottom: 8.0),
+                                          padding: const EdgeInsets.only(
+                                              bottom: 8.0),
                                           child: TextFormField(
-                                            controller: controller.descriptionController,
+                                            controller: controller
+                                                .descriptionController,
                                             validator: (value) {
                                               if (value!.isEmpty) {
                                                 return 'Description is required';
@@ -84,11 +89,19 @@ class HomePage extends GetView<TodoController> {
                                           width: double.maxFinite,
                                           child: ElevatedButton(
                                             onPressed: () async {
-                                              if (controller.formKey.currentState!.validate()) {
+                                              if (controller
+                                                  .formKey.currentState!
+                                                  .validate()) {
                                                 controller.editTodo(Todo(
-                                                    id: todos[index].id,
-                                                    text: controller.titleController.text.trim(),
-                                                    description: controller.descriptionController.text.trim(),));
+                                                  id: todos[index].id,
+                                                  text: controller
+                                                      .titleController.text
+                                                      .trim(),
+                                                  description: controller
+                                                      .descriptionController
+                                                      .text
+                                                      .trim(),
+                                                ));
                                                 // pop the bottom sheet
                                                 Navigator.pop(context);
                                               }
@@ -103,9 +116,6 @@ class HomePage extends GetView<TodoController> {
                               );
                             },
                           );
-
-
-
                         },
                         icon: const Icon(Icons.edit),
                       ),

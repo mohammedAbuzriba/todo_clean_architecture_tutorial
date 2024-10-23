@@ -21,7 +21,8 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => const HomePage(), binding: TodoBinding()),
+        GetPage(
+            name: '/', page: () => const HomePage(), binding: TodoBinding()),
       ],
     );
   }

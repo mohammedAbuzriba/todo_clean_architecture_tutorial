@@ -51,6 +51,7 @@ class TodoRepositoryImpl implements TodoRepository {
   Future<Either<Failure, Stream<List<Todo>>>> getAll() async {
     try {
       final results = remoteDatabase.listTodos();
+      print(results.toString());
       return Right(results);
     } catch (e) {
       return Left(Failure("Oops, we couldn't fetch todos from the database "));

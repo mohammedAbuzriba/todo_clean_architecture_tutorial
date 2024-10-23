@@ -17,24 +17,15 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -52,11 +43,38 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCxP3UtXUQh0yp_mkUmJ5bQ0bmUb-09bcM',
+    appId: '1:1039234762586:web:d7cda5eb714b3b95afd563',
+    messagingSenderId: '1039234762586',
+    projectId: 'todo-f44d8',
+    authDomain: 'todo-f44d8.firebaseapp.com',
+    storageBucket: 'todo-f44d8.appspot.com',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD3oquql1kc2x-MR8pC3LQR-w1GJyzQo0U',
-    appId: '1:978781561649:android:7d5cb1c67980a6dc7dc610',
-    messagingSenderId: '978781561649',
-    projectId: 'todo-clean-architecture-12345',
-    storageBucket: 'todo-clean-architecture-12345.appspot.com',
+    apiKey: 'AIzaSyDqQCm8XgJFBo6n0JU7bjzT_Q8cTyTV_PI',
+    appId: '1:1039234762586:android:f24bbe0d8cdb383bafd563',
+    messagingSenderId: '1039234762586',
+    projectId: 'todo-f44d8',
+    storageBucket: 'todo-f44d8.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyAE8hhKmEkkPzI4a9fc3OD-zw2YB1skuB0',
+    appId: '1:1039234762586:ios:94337219a8b75b8cafd563',
+    messagingSenderId: '1039234762586',
+    projectId: 'todo-f44d8',
+    storageBucket: 'todo-f44d8.appspot.com',
+    iosBundleId: 'com.jerondev.com.todoCleanArchitectureTutorial',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyAE8hhKmEkkPzI4a9fc3OD-zw2YB1skuB0',
+    appId: '1:1039234762586:ios:ffd7b9ecf3c1ba3dafd563',
+    messagingSenderId: '1039234762586',
+    projectId: 'todo-f44d8',
+    storageBucket: 'todo-f44d8.appspot.com',
+    iosBundleId: 'com.jerondev.com.todoCleanArchitectureTutorial.RunnerTests',
   );
 }

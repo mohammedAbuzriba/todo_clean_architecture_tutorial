@@ -15,7 +15,10 @@ abstract class TodoRemoteDatabase {
 class TodoRemoteDatabaseImpl implements TodoRemoteDatabase {
   @override
   Future<Todo> addTodo(Todo todo) async {
-    await FirebaseFirestore.instance.collection('todos').doc(todo.id).set(todo.toMap());
+    await FirebaseFirestore.instance
+        .collection('todos')
+        .doc(todo.id)
+        .set(todo.toMap());
     return todo;
   }
 
@@ -27,13 +30,19 @@ class TodoRemoteDatabaseImpl implements TodoRemoteDatabase {
 
   @override
   Future<Todo> editTodo(Todo todo) async {
-    await FirebaseFirestore.instance.collection('todos').doc(todo.id).update(todo.toMap());
+    await FirebaseFirestore.instance
+        .collection('todos')
+        .doc(todo.id)
+        .update(todo.toMap());
     return todo;
   }
 
   @override
   Stream<List<Todo>> listTodos() async* {
-    yield* FirebaseFirestore.instance.collection('todos').snapshots().map((snapshot) {
+    yield* FirebaseFirestore.instance
+        .collection('todos')
+        .snapshots()
+        .map((snapshot) {
       return snapshot.docs.map((doc) => Todo.fromMap(doc.data())).toList();
     });
   }
